@@ -149,6 +149,9 @@ void Chessboard::movePiece(int curr_rank, int curr_file, int new_rank, int new_f
 
     int piece = getSquare(curr_rank, curr_file);
 
+    // Add the moved flag
+    piece = piece | 0x8;
+
     setSquare(curr_rank, curr_file, 0x00);
     setSquare(new_rank, new_file, piece);
 }

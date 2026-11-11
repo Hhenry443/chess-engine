@@ -5,7 +5,6 @@
 #ifndef CHESS_ENGINE_PIECE_H
 #define CHESS_ENGINE_PIECE_H
 
-
 class Piece {
 private:
     int colour;

@@ -4,6 +4,7 @@
 
 #ifndef CHESS_ENGINE_BOARD_H
 #define CHESS_ENGINE_BOARD_H
+#include "piece.h"
 
 /**
  * Board is a long array of integers
@@ -45,7 +46,14 @@ public:
     void setupBoard();
 
     int getSquare(int rank, int file);
+
     void setSquare(int rank, int file, int colour, int type);
+    void setSquare(int rank, int file, int piece);
+
+    Piece getPiece(int rank, int file);
+
+    void movePiece(int curr_rank, int curr_file, int new_rank, int new_file);
+
 };
 
 

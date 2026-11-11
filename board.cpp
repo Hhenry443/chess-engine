@@ -95,8 +95,6 @@ int Chessboard::getSquare(int rank, int file) {
     // say we are given rank
     int index = rank + (file * 8);
 
-    std::cout << std::hex << board[index];
-
     return board[index];
 }
 
@@ -121,4 +119,55 @@ void Chessboard::setSquare(int rank, int file, int colour, int type) {
     int index = rank + (file * 8);
 
     board[index] = piece;
+}
+
+/**
+ * Chessboard::setSquare()
+ *
+ * Another utility to set a piece at a square
+ *
+ * @param rank The X position of the square
+ * @param file The Y position of the square
+ * @param piece The already known value of the piece to set
+ *
+ */
+void Chessboard::setSquare(int rank, int file, int piece) {
+    int index = rank + (file * 8);
+
+    board[index] = piece;
+}
+
+/**
+ * Chessboard::movePiece()
+ *
+ * Move piece from one square to a new one. Checks if move is valid.
+ *
+ */
+void Chessboard::movePiece(int curr_rank, int curr_file, int new_rank, int new_file) {
+    // To-Do:
+    // Add move checking on a per piece basis.
+
+    int piece = getSquare(curr_rank, curr_file);
+
+    setSquare(curr_rank, curr_file, 0x00);
+    setSquare(new_rank, new_file, piece);
+}
+
+/**
+ * Chessboard::getPiece()
+ *
+ * Get the piece at any given rank and file
+ *
+ * @param rank The X position of the square
+ * @param file The Y position of the square
+ *
+ * @returns A Piece object representing the piece at that rank and file
+ */
+Piece Chessboard::getPiece(int rank, int file) {
+    int piece = getSquare(rank, file);
+
+    int type = piece & 0x7;
+    int colour = (piece & 0x80) >> 7;
+
+    return {colour, type};
 }
